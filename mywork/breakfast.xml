@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<breakfast_menu>
+    <food>
+        <name>Full Irish</name>
+        <price>9.95</price>
+        <decription>Lots of meat and toast</description>
+    </food>
+    <food>
+        <name>Porridge</name>
+        <price>6.95</price>
+        <decription>Hot oat and honey</description>
+        <calories>600</calories>
+    </food>
+</breakfast_menu>
