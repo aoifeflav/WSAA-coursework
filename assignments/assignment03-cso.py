@@ -19,7 +19,9 @@ print("Data saved to cso.json")
 
 
 
-
-
-#https://stackoverflow.com/questions/37398301/json-dumps-format-python
-# I know that the exchequer would be under the CBI so I went to the CBI database and searced th word exchequer
+#References
+#https://stackoverflow.com/questions/37398301/json-dumps-format-python (formating json dump)
+# https://data.cso.ie/table/FIQ02 (Dataset used)
+# How I found the correct dataset: I know that the exchequer data would be under the Central Bank of Ireland datasets 
+# so I went to the CBI database and searched the word exchequer
+# ChatGPT used for debugging

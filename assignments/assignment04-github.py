@@ -29,3 +29,9 @@ newContents = newContents.replace(" he ", " she ").replace(" his ", " her ")
 # commit and push changes
 commitMessage = "Replaced 'Andrew' with 'Aoife' and changes the pronouns"
 gitHubResponse = repo.update_file(fileInfo.path, commitMessage, newContents, fileInfo.sha)
+
+#References
+#Lab and Lecture used to complete
+#https://www.w3schools.com/python/ref_string_replace.asp (How to replace one name for another)
+#https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api?apiVersion=2022-11-28 (Github API docs)
+#Chat GPT was used for debugging

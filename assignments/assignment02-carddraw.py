@@ -69,7 +69,7 @@ if not (has_pair or has_triple or is_straight or all_same_suit):
     print("You had no special combinations drawn")
 
 
-#Sources
-#https://stackoverflow.com/questions/2600191/how-do-i-count-the-occurrences-of-a-list-item
-#https://briancaffey.github.io/2018/01/02/checking-poker-hands-with-python
-#Perplexity.ai
+#References:
+#https://stackoverflow.com/questions/2600191/how-do-i-count-the-occurrences-of-a-list-item (counting occurences of a list item)
+#https://briancaffey.github.io/2018/01/02/checking-poker-hands-with-python (used to understand logic behind checking hands)
+#Perplexity.ai used for debugging
