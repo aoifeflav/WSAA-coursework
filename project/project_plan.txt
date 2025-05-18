@@ -2,4 +2,13 @@ Plan for WSAA project
 
 1. Finish watching lectures on HTML, Javascript, AJAX and hosting on python anywhere
 2. Decide what data my ptroject will deal with (maybe use some of the datasets used for applied databases)
-2. Use Andrew's sample code as a basis and figure out what to change from there
+3. Use Andrew's sample code as a basis and figure out what to change from there
+
+
+Project idea:
+My project will essentially have the same functionality as the app 'been'. 
+The database will hold a list of all countries I have visited, lived or want to visit (radio button).
+The date of visit (if applicable, not appliacable if it is just a want to go)
+The rating out of 10
+Maybe include some functionality where it tells you you have visited X% of the world
+Nice to have: The app knows the countries and will be able to say what continents you've visited.
