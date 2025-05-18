@@ -1,0 +1,5 @@
+Plan for WSAA project
+
+1. Finish watching lectures on HTML, Javascript, AJAX and hosting on python anywhere
+2. Decide what data my ptroject will deal with (maybe use some of the datasets used for applied databases)
+2. Use Andrew's sample code as a basis and figure out what to change from there
