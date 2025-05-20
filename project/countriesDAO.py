@@ -1,10 +1,10 @@
 # country dao 
-# this is a demonstration a data layer that connects to a datbase
-# Author: Andrew Beatty
+# data layer that connects to a datbase
+# Author: Aoife Flavin
 
 import mysql.connector
 import dbconfig as cfg
-class BookDAO:
+class CountryDAO:
     connection=""
     cursor =''
     host=       ''
@@ -34,7 +34,7 @@ class BookDAO:
          
     def getAll(self):
         cursor = self.getcursor()
-        sql="select * from book"
+        sql="select * from country"
         cursor.execute(sql)
         results = cursor.fetchall()
         returnArray = []
@@ -48,7 +48,7 @@ class BookDAO:
 
     def findByID(self, id):
         cursor = self.getcursor()
-        sql="select * from book where id = %s"
+        sql="select * from country where id = %s"
         values = (id,)
 
         cursor.execute(sql, values)
@@ -57,31 +57,31 @@ class BookDAO:
         self.closeAll()
         return returnvalue
 
-    def create(self, book):
+    def create(self, country):
         cursor = self.getcursor()
-        sql="insert into book (title,author, price) values (%s,%s,%s)"
-        values = (book.get("title"), book.get("author"), book.get("price"))
+        sql="insert into country (country_name,visit_date, rating) values (%s,%s,%s)"
+        values = (country.get("country_name"), country.get("visit_date"), country.get("rating"))
         cursor.execute(sql, values)
 
         self.connection.commit()
         newid = cursor.lastrowid
-        book["id"] = newid
+        country["id"] = newid
         self.closeAll()
-        return book
+        return country
 
 
-    def update(self, id, book):
+    def update(self, id, country):
         cursor = self.getcursor()
-        sql="update book set title= %s,author=%s, price=%s  where id = %s"
-        print(f"update book {book}")
-        values = (book.get("title"), book.get("author"), book.get("price"),id)
+        sql="update country set country_name= %s,visit_date=%s, rating=%s  where id = %s"
+        print(f"update country {country}")
+        values = (country.get("country_name"), country.get("visit_date"), country.get("rating"),id)
         cursor.execute(sql, values)
         self.connection.commit()
         self.closeAll()
         
     def delete(self, id):
         cursor = self.getcursor()
-        sql="delete from book where id = %s"
+        sql="delete from country where id = %s"
         values = (id,)
 
         cursor.execute(sql, values)
@@ -92,13 +92,13 @@ class BookDAO:
         #print("delete done")
 
     def convertToDictionary(self, resultLine):
-        attkeys=['id','title','author', "price"]
-        book = {}
+        attkeys=['id','country_name','visit_date', "rating"]
+        country = {}
         currentkey = 0
         for attrib in resultLine:
-            book[attkeys[currentkey]] = attrib
+            country[attkeys[currentkey]] = attrib
             currentkey = currentkey + 1 
-        return book
+        return country
 
         
-bookDAO = BookDAO()
+countryDAO = CountryDAO()
