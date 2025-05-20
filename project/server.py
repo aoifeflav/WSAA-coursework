@@ -4,7 +4,7 @@ app = Flask(__name__)
 cors = CORS(app) # allow CORS for all domains on all routes.
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-from countriesDAO import countryDAO
+from countriesDAO import CountryDAO
 
 app = Flask(__name__, static_url_path='', static_folder='.')
 
@@ -15,69 +15,69 @@ app = Flask(__name__, static_url_path='', static_folder='.')
 def index():
     return "Hello, World!"
 
-#curl "http://127.0.0.1:5000/books"
-@app.route('/books')
+#curl "http://127.0.0.1:5000/countries"
+@app.route('/countries')
 @cross_origin()
 def getAll():
     #print("in getall")
-    results = bookDAO.getAll()
+    results = CountryDAO.getAll()
     return jsonify(results)
 
-#curl "http://127.0.0.1:5000/books/2"
+#curl "http://127.0.0.1:5000/countries/2"
 @app.route('/books/<int:id>')
 @cross_origin()
 def findById(id):
-    foundBook = bookDAO.findByID(id)
+    foundBook = CountryDAO.findByID(id)
 
     return jsonify(foundBook)
 
-#curl  -i -H "Content-Type:application/json" -X POST -d "{\"title\":\"hello\",\"author\":\"someone\",\"price\":123}" http://127.0.0.1:5000/books
-@app.route('/books', methods=['POST'])
+#curl  -i -H "Content-Type:application/json" -X POST -d "{\"country_name\":\"France\",\"visit_date\":\"2017-06-01\",\"rating\":7}" http://127.0.0.1:5000/countries
+@app.route('/countries', methods=['POST'])
 @cross_origin()
 def create():
     
     if not request.json:
         abort(400)
     # other checking 
-    book = {
-        "title": request.json['title'],
-        "author": request.json['author'],
-        "price": request.json['price'],
+    country = {
+        "country_name": request.json['country_name'],
+        "visit_date": request.json['visit_date'],
+        "rating": request.json['rating'],
     }
-    addedbook = bookDAO.create(book)
+    addedcountry = CountryDAO.create(country)
     
-    return jsonify(addedbook)
+    return jsonify(addedcountry)
 
 #curl  -i -H "Content-Type:application/json" -X PUT -d "{\"title\":\"hello\",\"author\":\"someone\",\"price\":123}" http://127.0.0.1:5000/books/1
-@app.route('/books/<int:id>', methods=['PUT'])
+@app.route('/countries/<int:id>', methods=['PUT'])
 @cross_origin()
 def update(id):
-    foundBook = bookDAO.findByID(id)
-    if not foundBook:
+    foundCountry = CountryDAO.findByID(id)
+    if not foundCountry:
         abort(404)
     
     if not request.json:
         abort(400)
     reqJson = request.json
-    if 'price' in reqJson and type(reqJson['price']) is not int:
+    if 'rating' in reqJson and type(reqJson['rating']) is not int:
         abort(400)
 
-    if 'title' in reqJson:
-        foundBook['title'] = reqJson['title']
-    if 'author' in reqJson:
-        foundBook['author'] = reqJson['author']
-    if 'price' in reqJson:
-        foundBook['price'] = reqJson['price']
-    bookDAO.update(id,foundBook)
-    return jsonify(foundBook)
+    if 'country_name' in reqJson:
+        foundCountry['country_name'] = reqJson['country_name']
+    if 'visit_date' in reqJson:
+        foundCountry['visit_date'] = reqJson['visit_date']
+    if 'rating' in reqJson:
+        foundCountry['rating'] = reqJson['rating']
+    CountryDAO.update(id,foundCountry)
+    return jsonify(foundCountry)
         
 
     
 
-@app.route('/books/<int:id>' , methods=['DELETE'])
+@app.route('/countries/<int:id>' , methods=['DELETE'])
 @cross_origin()
 def delete(id):
-    bookDAO.delete(id)
+    CountryDAO.delete(id)
     return jsonify({"done":True})
 
 
