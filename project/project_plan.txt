@@ -12,3 +12,12 @@ The date of visit (if applicable, not appliacable if it is just a want to go)
 The rating out of 10
 Maybe include some functionality where it tells you you have visited X% of the world
 Nice to have: The app knows the countries and will be able to say what continents you've visited.
+
+
+Create database:
+CREATE TABLE country (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    country_name VARCHAR(255) NOT NULL,
+    visit_date DATE NOT NULL,
+    rating INT NOT NULL
+);

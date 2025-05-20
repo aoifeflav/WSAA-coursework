@@ -5,32 +5,29 @@
 import mysql.connector
 import dbconfig as cfg
 class CountryDAO:
-    connection=""
-    cursor =''
-    host=       ''
-    user=       ''
-    password=   ''
-    database=   ''
-    
     def __init__(self):
-        self.host=       cfg.mysql['host']
-        self.user=       cfg.mysql['user']
-        self.password=   cfg.mysql['password']
-        self.database=   cfg.mysql['database']
+        self.host = cfg.mysql['host']
+        self.user = cfg.mysql['user']
+        self.password = cfg.mysql['password']
+        self.database = cfg.mysql['database']
+        self.connection = None
+        self.cursor = None
 
-    def getcursor(self): 
+    def getcursor(self):
         self.connection = mysql.connector.connect(
-            host=       self.host,
-            user=       self.user,
-            password=   self.password,
-            database=   self.database,
+            host=self.host,
+            user=self.user,
+            password=self.password,
+            database=self.database
         )
         self.cursor = self.connection.cursor()
         return self.cursor
 
     def closeAll(self):
-        self.connection.close()
-        self.cursor.close()
+        if self.cursor:
+            self.cursor.close()
+        if self.connection:
+            self.connection.close()
          
     def getAll(self):
         cursor = self.getcursor()
@@ -53,7 +50,7 @@ class CountryDAO:
 
         cursor.execute(sql, values)
         result = cursor.fetchone()
-        returnvalue = self.convertToDictionary(result)
+        returnvalue = self.convertToDictionary(result) if result else None
         self.closeAll()
         return returnvalue
 
@@ -73,7 +70,7 @@ class CountryDAO:
     def update(self, id, country):
         cursor = self.getcursor()
         sql="update country set country_name= %s,visit_date=%s, rating=%s  where id = %s"
-        print(f"update country {country}")
+        #print(f"update country {country}")
         values = (country.get("country_name"), country.get("visit_date"), country.get("rating"),id)
         cursor.execute(sql, values)
         self.connection.commit()
@@ -94,11 +91,9 @@ class CountryDAO:
     def convertToDictionary(self, resultLine):
         attkeys=['id','country_name','visit_date', "rating"]
         country = {}
-        currentkey = 0
-        for attrib in resultLine:
-            country[attkeys[currentkey]] = attrib
-            currentkey = currentkey + 1 
+        if resultLine:
+            for i, attrib in enumerate(resultLine):
+                country[attkeys[i]] = attrib
         return country
 
-        
 countryDAO = CountryDAO()
