@@ -1,1 +1,15 @@
 https://www.w3schools.com/html/html_form_input_types.asp - HTML input types 
+https://chatgpt.com/ - For debugging and adding styling features
+https://www.w3schools.com/html/ - For basic html format
+https://www.w3schools.com/jquery/jquery_ref_ajax.asp - Using Ajax  
+https://blog.pythonanywhere.com/121/ - Hosting on pythonanywhere
+https://www.w3schools.com/bootstrap/ - Using bootstrap to add styling features
+https://app.unpkg.com/three@0.77.0 - Javascript 3D library
+https://www.w3schools.com/python/python_mysql_getstarted.asp - Using the mysql connector
+
+    <li><a href="https://flask.palletsprojects.com/" target="_blank">Flask Documentation</a></li>
+    <li><a href="https://www.pythonanywhere.com/" target="_blank">PythonAnywhere</a></li>
+    <li><a href="https://pypi.org/project/mysql-connector-python/" target="_blank">MySQL Connector for Python</a></li>
+    <li><a href="https://api.jquery.com/" target="_blank">jQuery API Reference</a></li>
+    <li><a href="https://github.com/vasturiano/globe.gl" target="_blank">Globe.gl Library</a></li>
+    <li><a href="https://getbootstrap.com/" target="_blank">Bootstrap</a></li>

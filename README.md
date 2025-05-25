@@ -8,7 +8,7 @@ The repository is divided into three main sections:
 
 1. **Assignments** – Contains graded coursework submitted throughout the semester.
 2. **MyWork** – Contains lab work and exercises completed during the semester (not graded).
-3. **Project** – Currently a work in progress. Details will be added here once the project is complete.
+3. **Project** – Please see this repository for my final project: https://github.com/aoifeflav/WSAAproject-hosted.git
 
 >  *Note: As the `mywork` folder is not graded and the final project is not et complete, their contents are not described in this README.*
 
@@ -56,7 +56,6 @@ This document focuses on the **Assignments** section.
 ## Dependencies
 
 All required Python packages are listed in `requirements.txt`:
-
 
 
 
